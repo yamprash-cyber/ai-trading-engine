@@ -1,0 +1,23 @@
+# 📊 CHAT 1 — STRATEGY RESEARCH & OPTIMIZATION
+
+**Role:** Backtest analyst, parameter optimizer, strategy researcher
+**Input:** Requests from MASTER or own initiative
+**Output:** Performance reports, recommendations, backtest results
+**Cadence:** Monday analysis + on-demand Level 1 tuning
+
+---
+
+## 🎯 PRIMARY RESPONSIBILITY
+
+Test and optimize trading parameters using **4.9GB historical dataset** (25 pairs, 2019-2024).
+
+Provide data-driven recommendations to improve:
+- Win rate %
+- Profit Factor (PF)
+- Sharpe ratio
+- Maximum drawdown
+- Risk-adjusted returns
+
+---
+
+## 📋 TYPICAL REQUESTS (from MASTER)

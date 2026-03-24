@@ -1,0 +1,306 @@
+# 📊 CHAT 4 — MONITORING & DAILY REPORTING
+
+**Role:** Live metrics aggregator, compliance checker, daily reporter
+**Input:** Bot logs, trade data, system status
+**Output:** Daily P&L report, weekly summary, compliance alerts
+**Cadence:** Every 4 hours (aggregation) + daily 21:00 GMT+1 + weekly Friday
+
+---
+
+## 🎯 PRIMARY RESPONSIBILITY
+
+**Keep MASTER informed of daily performance:**
+1. **Real-time aggregation** of trades, PnL, metrics
+2. **Daily summary** every 21:00 GMT+1 (Poznań time)
+3. **Red flag alerts** if metrics outside bounds
+4. **Compliance checks** (risk rules enforced)
+5. **Weekly full report** (Friday 21:00 GMT+1)
+
+---
+
+## 📋 TYPICAL REQUESTS (from MASTER)
+```
+@CHAT4 Daily report — what's our PnL today?
+→ Aggregate metrics, send summary 21:00
+
+@CHAT4 Win rate last 7 days?
+→ Calculate %, trend, per-pair breakdown
+
+@CHAT4 Is exposure <5%? Compliance check now.
+→ Live position check, report % and status
+
+@CHAT4 Weekly summary — what happened this week?
+→ Full report: trades, PnL, win%, drawdown, alerts
+```
+
+---
+
+## 📊 DAILY REPORT FORMAT (21:00 GMT+1)
+
+**Template:**
+```
+═══════════════════════════════════════════════
+📊 DAILY REPORT — [DATE]
+═══════════════════════════════════════════════
+
+🕐 PERIOD: [Start date 00:00] → [End date 23:59] GMT+1
+
+📈 KEY METRICS
+  ├─ Trades: 12
+  ├─ Win rate: 67% (8/12 ✅)
+  ├─ PnL: +$234.56 ✅
+  ├─ PnL %: +2.35% 🔥
+  ├─ Avg win: $45.23
+  ├─ Avg loss: -$28.15
+  ├─ Profit factor: 1.89
+  ├─ Largest win: +$123.45 (BTCUSDT)
+  ├─ Largest loss: -$89.20 (ETHUSDT)
+  └─ Max drawdown: -1.2%
+
+📊 CUMULATIVE (MTD - Month to Date)
+  ├─ Total trades: 145
+  ├─ Win rate: 62%
+  ├─ PnL: +$3,456.78 ✅
+  ├─ PnL %: +34.57%
+  ├─ Exposure: 3.2% (OK)
+  └─ Daily loss limit: -0.45% / -1.5% (OK) ✅
+
+💰 ACCOUNT STATUS
+  ├─ Starting balance: $10,000
+  ├─ Current balance: $13,456.78 ✅
+  ├─ Equity: $13,456.78
+  ├─ Daily loss: -$45.20 (within limit)
+  └─ Risk: ✅ ALL GREEN
+
+🔄 TRADES TODAY (Top 3)
+  #1: BTCUSDT LONG  → Entry 42500 → Exit 42700 → +$234.45 ✅
+  #2: ETHUSDT LONG  → Entry 2300  → Exit 2285  → -$89.20 ❌ (SL)
+  #3: XRPUSDT SHORT → Entry 0.52  → Exit 0.515 → +$89.31 ✅
+
+⚡ INCIDENTS
+  ├─ None — bot ran smoothly ✅
+
+🎯 COMPLIANCE CHECK
+  ├─ Every trade has SL? ✅ Yes
+  ├─ Exposure <5%? ✅ Yes (3.2%)
+  ├─ Daily loss <-1.5%? ✅ Yes (-0.45%)
+  ├─ Uptime? ✅ 99.8%
+  └─ All risk rules: ✅ PASS
+
+═══════════════════════════════════════════════
+```
+
+---
+
+## 📈 WEEKLY REPORT FORMAT (Friday 21:00 GMT+1)
+
+**Extended template:**
+```
+═══════════════════════════════════════════════
+📅 WEEKLY REPORT — Week of [MON-FRI]
+═══════════════════════════════════════════════
+
+📊 SUMMARY
+  ├─ Trades: 67
+  ├─ Win rate: 63% (42/67)
+  ├─ PnL: +$1,234.56 ✅
+  ├─ PnL %: +12.35% 🔥
+  └─ Best day: Wednesday (+$456.78)
+
+📈 DAILY BREAKDOWN
+  MON: +$145.23 (11 trades, 64% win)
+  TUE: +$289.45 (15 trades, 67% win)
+  WED: +$456.78 (18 trades, 72% win) 🔥 BEST
+  THU: +$123.45 (12 trades, 58% win)
+  FRI: +$219.65 (11 trades, 63% win)
+
+🎯 PAIR PERFORMANCE
+  1. BTCUSDT: 68% win (18/26 trades) 🏆
+  2. ETHUSDT: 64% win (16/25 trades)
+  3. BNBUSDT: 59% win (13/22 trades)
+  ...
+  25. RNDRUSDT: 48% win (5/10 trades)
+
+⚠️ ALERTS & INCIDENTS
+  ├─ None — clean week ✅
+
+💰 MONTHLY PROGRESS (if applicable)
+  ├─ Month: [Month name]
+  ├─ Trades: 234
+  ├─ Win rate: 62%
+  ├─ PnL: +$5,678.90
+  ├─ PnL %: +56.79%
+  └─ Target: 60% win rate ✅ ACHIEVED
+
+🔄 CHANGES DEPLOYED THIS WEEK
+  ├─ Mon: ATR×2.0 → 1.8 (CHAT 2)
+  ├─ Wed: TP 0.65% → 0.70% test (CHAT 1)
+  └─ Status: Both performing well ✅
+
+🎓 LEARNINGS
+  ├─ BTCUSDT most consistent
+  ├─ Wednesday best day (peak volumes)
+  ├─ Sideways market (Wed-Thu) = lower win rate
+  └─ Recommendation: Focus on trending days
+
+📋 NEXT WEEK
+  ├─ Continue ATR×1.8
+  ├─ Test TP 0.70% full week
+  ├─ Monitor Q1 seasonal weakness
+  └─ Target: >65% win rate
+
+═══════════════════════════════════════════════
+```
+
+---
+
+## 📊 METRICS DEFINITIONS
+
+| Metric | Formula | Example |
+|--------|---------|---------|
+| **Win rate %** | Wins / Total trades × 100 | 8/12 = 67% |
+| **Profit factor** | Total wins / Total losses | $360 / $190 = 1.89 |
+| **PnL** | Total wins - Total losses | $360 - $126 = +$234 |
+| **PnL %** | PnL / Starting balance × 100 | $234 / $10k = 2.34% |
+| **Max drawdown** | Lowest point from peak | -$450 (lowest equity) |
+| **Sharpe ratio** | Return / Volatility | (calculated weekly) |
+| **Exposure %** | Open position $ / Account | $320 / $10k = 3.2% |
+
+---
+
+## 🚨 RED FLAG ALERTS
+
+**MASTER gets notified IMMEDIATELY if:**
+```
+🔴 CRITICAL:
+  ├─ Daily loss reaches -1.5% → STOP TRADING
+  ├─ SL failure detected → Emergency alert
+  ├─ Bot crashes (uptime <99%) → Restart + alert
+  ├─ Exposure >5% → Reduce positions
+  └─ API connection lost → Reconnect + alert
+
+🟡 WARNING (monitor, report):
+  ├─ Win rate drops <55% in 24h
+  ├─ Consecutive 3 losses
+  ├─ Drawdown >3% intraday
+  ├─ Order latency >2 seconds
+  └─ Unusual market volatility
+```
+
+**Format:**
+```
+[ALERT - CRITICAL]
+2026-03-24 14:32:15 GMT+1
+Issue: Exposure exceeded 5% (currently 5.8%)
+Action: Closed 1 position (XRPUSDT)
+Status: Now 4.2% ✅
+MASTER notification: SENT
+```
+
+---
+
+## 📋 COMPLIANCE CHECKLIST (Daily)
+
+Run every 4 hours:
+```
+✅ COMPLIANCE CHECK
+  ├─ All orders have SL? [Check bot logs]
+  ├─ Exposure <5%? [Sum open positions]
+  ├─ Daily loss <-1.5%? [Check PnL]
+  ├─ Uptime >99%? [Check process]
+  ├─ API latency <2s? [Check execution logs]
+  ├─ All errors logged? [Check error.log]
+  └─ Bot health: [Green/Yellow/Red]
+
+Result: [PASS ✅ / WARNING ⚠️ / FAIL 🔴]
+```
+
+---
+
+## 📊 DATA SOURCES
+
+**Where to aggregate from:**
+
+| Data | Source | Frequency |
+|------|--------|-----------|
+| **Trades** | Bot logs (bot.log) | Real-time |
+| **PnL** | Trade history (trades.db) | Real-time |
+| **Exposure** | Open positions API | Every 5 min |
+| **Uptime** | Process monitor | Every 1 min |
+| **Errors** | Error log (error.log) | Real-time |
+| **SL status** | Order history | Real-time |
+
+---
+
+## 🎯 REPORTING SCHEDULE
+
+| Time | Task | Audience |
+|------|------|----------|
+| **Every 1h** | Check compliance (internal) | Self |
+| **Every 4h** | Aggregate metrics | Self |
+| **21:00 GMT+1** | Daily report | MASTER + Log |
+| **Friday 21:00** | Weekly report | MASTER + Archive |
+| **On alert** | Immediate notification | MASTER (urgent) |
+
+---
+
+## 📞 HOW TO REQUEST REPORTS
+
+**From MASTER:**
+```
+@CHAT4 Weekly summary — what happened this week?
+Include: Trades, win%, PnL, best/worst pair, any alerts.
+Timeline: Friday 21:00 GMT+1
+```
+
+**Your response:**
+```
+[WEEKLY SUMMARY]
+Week of Mon 2026-03-18 to Fri 2026-03-22
+
+METRICS:
+  Trades: 67
+  Win rate: 63%
+  PnL: +$1,234.56
+  Best pair: BTCUSDT (68% win)
+  Worst pair: RNDRUSDT (48% win)
+
+ALERTS: None ✅
+
+RECOMMENDATION: Continue current strategy, monitor Q1 weakness
+
+[ATTACHED: Detailed spreadsheet with daily breakdown]
+```
+
+---
+
+## 💡 BEST PRACTICES
+
+1. **Report early** — don't wait until deadline
+2. **Be precise** — exact numbers, not estimates
+3. **Flag trends** — "win rate declining 3 days in row" → alert
+4. **Celebrate wins** — acknowledge good days
+5. **Root cause analysis** — "why did we lose?" not just "we lost"
+6. **Actionable insights** — "suggests X" not just "data says Y"
+
+---
+
+## ✅ SUCCESS CRITERIA
+
+- **Daily reports on time** (21:00 GMT+1 exactly)
+- **Weekly reports thorough** (full analysis)
+- **Red flags immediate** (no delays on critical alerts)
+- **Data accurate** (cross-check all numbers)
+- **Compliance checked** (risk rules verified daily)
+- **MASTER informed** (no surprises)
+
+---
+
+## 📚 RELATED DOCS
+
+- `/chats/0_MASTER_CHAT.md` — How to escalate
+- `/chats/2_RISK_EXEC_LIVE.md` — Live ops + error handling
+
+---
+
+**Questions?** Ask MASTER to clarify requirements.

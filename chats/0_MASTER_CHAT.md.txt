@@ -1,0 +1,142 @@
+# 🎯 MASTER CHAT — Robert (Project Manager)
+
+**Role:** Project director, decision maker, strategy authority
+**Location:** Claude.ai (Main thread)
+**Cadence:** Continuous + Weekly sync (Friday 21:00 GMT+1)
+
+---
+
+## 📋 RESPONSIBILITIES
+
+- **Direct workflow:** Route tasks to subordinate chats
+- **Authorize changes:** Level 2-3 decisions require your approval
+- **Monitor KPIs:** Win rate, PnL, drawdown, uptime, exposure
+- **Strategic pivots:** Decide on major changes (TP, SL, pairs, risk limits)
+- **Go/No-Go decision:** 2026-06-17 live trading approval
+
+---
+
+## 🔄 WORKFLOW
+```
+You (MASTER)
+    ↓ "Test ATR×1.8 vs 2.0"
+CHAT 2 (Risk+Exec) backtest
+    ↓
+CHAT 3 (Backtest) historical test
+    ↓ [RESULTS]
+You → APPROVE/REJECT
+    ↓
+CHAT 4 (Monitoring) deploy + track
+```
+
+---
+
+## 📊 KEY METRICS (Monitor Daily)
+
+| Metric | Target | Alert |
+|--------|--------|-------|
+| **Win Rate** | ≥60% | <55% = RED FLAG |
+| **PnL** | +$100+ | <0 for 3 days = review |
+| **Drawdown** | <5% | >10% = reduce risk |
+| **Uptime** | 99%+ | <99% = debug |
+| **Exposure** | <5% | >5% = stop trading |
+| **Daily Loss** | -1.5% stop | Auto halt bot |
+
+---
+
+## 📅 WEEKLY RHYTHM (Poznań GMT+1)
+
+| Day | Time | Task | With |
+|-----|------|------|------|
+| **Mon** | 09:00 | Strategy analysis | CHAT 1 |
+| **Tue-Thu** | On-demand | Level 1-2 changes | CHAT 2 |
+| **Tue** | 15:00 | Backtest deep-dive | CHAT 3 |
+| **Fri** | 21:00 | Weekly report + pivot decisions | ALL CHATS |
+| **24/7** | On-alert | Emergency (Level 4) | CHAT 2 |
+
+---
+
+## 🚨 ESCALATION RULES
+
+### Level 1 — Auto-Deploy
+- Parameter ±10% tuning
+- CHAT 1 auto-optimizes, you review weekly
+- **Action:** Review reports, confirm weekly
+
+### Level 2 — Collaborative
+- Strategy tweak (change indicator, SL multiple, TP%)
+- CHAT 2 proposes, you discuss, you approve
+- **Action:** Say "APPROVE" or "REJECT" + reason
+
+### Level 3 — Strategic Discussion
+- Big change (new pairs, new strategy, risk limits)
+- Full discussion, you make final decision
+- **Action:** Discuss in MASTER, decide
+
+### Level 4 — Emergency
+- Bot error, SL fails, critical bug
+- CHAT 2 fixes immediately, explains post-factum
+- **Action:** Acknowledge, review fix, approve
+
+---
+
+## 📞 HOW TO ROUTE TASKS
+
+**Syntax:** Always start message with target chat:
+```
+@CHAT1 Test whether 5-min ATR better than 1-min
+→ Backtest, compare Sharpe, report
+
+@CHAT2 Is current exposure >5%?
+→ Check live position, report status
+
+@CHAT3 Deep-dive: why BTCUSDT underperforming?
+→ Historical analysis, compare 2024 vs 2025
+
+@CHAT4 Daily report — what's PnL today?
+→ Aggregate metrics, compliance check
+```
+
+---
+
+## 💾 DECISION LOG (Keep Updated)
+
+Every decision → record here:
+```
+DATE: 2026-03-24
+DECISION: Approved ATR×1.8 (was 2.0)
+REASON: Better risk/reward in sideways markets
+STATUS: Testing on paper trading
+NEXT REVIEW: 2026-03-31
+```
+
+---
+
+## 🎯 CURRENT STATE (as of 2026-03-24)
+
+- **Paper trading:** Live 157.230.117.206 (SL-ONLY mode)
+- **4 trades in 6h52min:** -$4.08 PnL (-0.082%), 3/4 SL success
+- **Confidence:** 80% (selective), ATR×2.0 (safe)
+- **Next:** Risk Recycling (Cowork), TP logic (Cowork), weekly analysis (Fri)
+- **Target:** 60%+ win rate, PF>1.5, live decision 2026-06-17
+
+---
+
+## 🔗 RELATED DOCS
+
+- `/chats/1_STRATEGY_RESEARCH.md` — Backtest + parameter tuning
+- `/chats/2_RISK_EXEC_LIVE.md` — Live ops + error handling
+- `/chats/3_BACKTEST_ANALYSIS.md` — Historical deep-dives
+- `/chats/4_MONITORING_REPORT.md` — Daily metrics + compliance
+
+---
+
+## ✅ QUICK START
+
+1. **Read** this document
+2. **Route tasks** using `@CHAT1/2/3/4` syntax
+3. **Review reports** every Friday
+4. **Make decisions** — approve/reject changes
+5. **Monitor KPIs** — daily glance at win rate + PnL
+
+**Questions?** Ask in this chat. I route to subordinate chats as needed.
