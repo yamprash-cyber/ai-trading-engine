@@ -1,0 +1,16 @@
+notepad C:\trading-bot\.gitignore
+```
+
+Wklej:
+```
+/backtest/data/
+*.csv
+/logs/
+*.log
+.DS_Store
+__pycache__/
+.venv/
+.vscode/
+*.pyc
+/v2_active/*.log
+trades.db
